@@ -1,0 +1,20 @@
+
+<h1>
+    <!-- Interpolation -->
+    Welcome to {{ hotelName }} !!
+</h1>
+
+<!-- Property Binding -->
+<div [hidden]="hideDetails" >
+    No of Rooms  <p [innerText]="noOfRooms"></p> 
+</div>
+
+<!-- Event Binding -->
+<button (click)="hideRooms()" >Hide Rooms</button>
+
+
+
+
+
+
+
