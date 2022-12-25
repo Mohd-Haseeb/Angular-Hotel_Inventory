@@ -40,11 +40,11 @@
                 <td>{{ i }}</td>
                 <td>{{ e ? "Even" : "Odd" }}</td>
                 <td>{{ r.roomNumber }}</td>  
-                <td>{{ r.roomType }}</td>  
-                <td>{{ r.price }}</td>  
+                <td>{{ r.roomType | uppercase }}</td>  
+                <td>{{ r.price | currency : 'GBP'}}</td>  
                 <td>{{ r.photo }}</td>  
-                <td>{{ r.checkInTime }}</td>  
-                <td>{{ r.checkOutTime }}</td>  
+                <td>{{ r.checkInTime | date }}</td>  
+                <td>{{ r.checkOutTime | date : 'mediumDate' }}</td>  
             </tr>
         </tbody>
     </table>

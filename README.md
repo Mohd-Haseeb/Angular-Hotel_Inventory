@@ -35,3 +35,18 @@ To create a component:
     - ngClass
     - ngStyle
 
+
+## Pipes
+
+- Pipes are used for Data Transformation
+- They don't actually modify the data
+- Few built in pipes are
+    - DatePipe
+    - UppercasePipe
+    - LowercasePipe
+    - CurrencyPipe
+    - DecimalPipe
+    - PercentPipe
+    - JsonPipe
+    - SlicePipe
+    - AsyncPipe
