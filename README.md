@@ -50,3 +50,6 @@ To create a component:
     - JsonPipe
     - SlicePipe
     - AsyncPipe
+
+
+> npm i bootstrap
