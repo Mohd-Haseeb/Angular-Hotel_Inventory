@@ -15,3 +15,23 @@ To create a component:
     2. Property Bindiing => [valid_html_property] : box-syntax
     3. Event Binding => (event_name)="function_name()" : banana-syntax
  
+## Directives
+
+- Directives are used to change the behaviour and appearance of DOM
+- Directives can implement all Lifecycle hooks
+- Directives cannot have Template 
+
+- ### Types of Directives
+    1. Structural Directive 
+        - These are costly as they change DOM and can cause performance issues
+        - They can modify the DOM
+        - starts with *  (generally)
+    2. Attribute Directive
+        - They can modify the DOM but not add/remove elements from DOM like Structural Directive
+- ### Built in  Directives
+    - *ngIf
+    - *ngFor
+    - *ngSwitch
+    - ngClass
+    - ngStyle
+

@@ -1,0 +1,17 @@
+.container {
+    background-color: antiquewhite;
+    color: #000;
+}
+
+.even {
+    background-color: #6a6a6a;
+}
+
+.odd {
+    background-color: violet;
+}
+
+td {
+    padding: 10px;
+    text-align: center;
+}

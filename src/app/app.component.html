@@ -1,5 +1,18 @@
 <h1>{{title}}</h1>   
 
+<div [ngSwitch]="role" >
+    <div *ngSwitchCase="'Admin'">
+        <h2>You have logged in as an Admin!!</h2>
+    </div>
+    <div *ngSwitchCase="'User'">
+        <h2>You have logged in as a User.</h2>
+    </div>
+    <div *ngSwitchDefault>
+        <h2>YOU ARE NOT AUTHORISED!!</h2>
+    </div>
+</div>
+
+
 <app-rooms></app-rooms>
 
 <router-outlet></router-outlet>

@@ -1,3 +1,5 @@
+<div class="container">
+
 
 <h1>
     <!-- Interpolation -->
@@ -12,9 +14,44 @@
 <!-- Event Binding -->
 <button (click)="hideRooms()" >Hide Rooms</button>
 
+<!-- Directives -->
 
 
+<div *ngIf="rooms?.availableRooms">
+    <p> Available -> {{ rooms.availableRooms }}</p>
+    <p> Total -> {{ rooms.totalRooms }}</p>
+    <p> Booked -> {{ rooms.bookedRooms }}</p>
+</div>
+
+<div *ngIf="roomList">
+    <table>
+        <tr>
+            <th>Index Position</th>
+            <th>Even/Odd</th>
+            <th>Number</th>
+            <th>Type</th>
+            <th>Price</th>
+            <th>Photo</th>
+            <th>Check In</th>
+            <th>Check Out</th>
+        </tr>
+        <tbody>
+            <tr [ngClass]="e ? 'even' : 'odd'" *ngFor="let r of roomList; let e = even; let o = odd; let i = index ">
+                <td>{{ i }}</td>
+                <td>{{ e ? "Even" : "Odd" }}</td>
+                <td>{{ r.roomNumber }}</td>  
+                <td>{{ r.roomType }}</td>  
+                <td>{{ r.price }}</td>  
+                <td>{{ r.photo }}</td>  
+                <td>{{ r.checkInTime }}</td>  
+                <td>{{ r.checkOutTime }}</td>  
+            </tr>
+        </tbody>
+    </table>
+</div>
 
 
+<!-- We can also do optinal chaining here -->
+<!-- {{ rooms.availableRooms??"No Rooms"}} -->
 
-
+</div>
