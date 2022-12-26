@@ -142,3 +142,10 @@ To create a component:
 - __ngOnChanges__ life cycle hook can be applied on a component which has __@Input__ property
 
 - Use Case : So, whenever we get a new value in the __@Input__ => We update the value in the View by using __ngOnChnages__
+
+
+## ngDoCheck
+
+- On Changes event is something executed everytime we raise any event irrespective of where the Component is implemented or available
+- It will listen to any changes happened anywhere in the entire application
+- ***IMPORTANT*** => We should not implement __ngOnChange__ and __ngDoCheck__ together in the same Component
