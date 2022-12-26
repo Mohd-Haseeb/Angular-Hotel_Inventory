@@ -26,10 +26,15 @@
 <div *ngIf="roomList">
 
     <!-- @Input is used to send roomList data to rooms in the rooms-list component -->
-    <app-rooms-list [rooms]="roomList" ></app-rooms-list>
+    <!-- @Output is used to receive data from Child coponent. Here we are receiving selectedRoom from child -->
+    <app-rooms-list [rooms]="roomList" (selectedRoom)="selectRoom($event)" ></app-rooms-list>
     
 </div>
 
+
+<div *ngIf="roomSelected">
+    <p> {{roomSelected | json}} </p>
+</div>
 
 <!-- We can also do optinal chaining here -->
 <!-- {{ rooms.availableRooms??"No Rooms"}} -->
