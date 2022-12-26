@@ -160,5 +160,22 @@ To create a component:
 - We can use this lifecycle hook, if we have to perform certain operations after the other components we use in our current templete is completelt loaded
 
 ## ngAfterViewChecked
-- 
+-  A callback method that is invoked immediately after the default change detector has completed one change-check cycle for a component's view.
 
+
+
+## ng-template
+
+- ***NOTE*** : If we arite __#__ on any HTML tag, we call it __Template Reference__ and we can access this in ths .ts file using __@ViewChild__
+
+```HTML
+    <ng-template #user>
+        <h3>This Content is displayed DYNAMICALLY by using ng-template && @ViewChild</h3>
+    </ng-template>
+```
+
+```typescript
+    @ViewChild('user', { read: ViewContainerRef }) vcr !: ViewContainerRef;
+```
+
+- Here we are saying, give me reference to the __user__ tag and this __ViewContainerRef__ will help us to dynamically load a component

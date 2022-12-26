@@ -1,4 +1,4 @@
-import { Component, OnInit, DoCheck, ViewChild, AfterViewInit } from '@angular/core';
+import { Component, OnInit, DoCheck, ViewChild, AfterViewInit, AfterViewChecked } from '@angular/core';
 import { RoomList, Rooms } from './rooms';
 import { HeaderComponent } from '../header/header.component';
 
@@ -9,7 +9,7 @@ import { HeaderComponent } from '../header/header.component';
   templateUrl: './rooms.component.html',
   styleUrls: ['./rooms.component.css']
 })
-export class RoomsComponent implements OnInit, DoCheck, AfterViewInit {
+export class RoomsComponent implements OnInit, DoCheck, AfterViewInit, AfterViewChecked {
     
 
     hotelName:string = 'Developer\'s Hotel';
@@ -70,6 +70,10 @@ export class RoomsComponent implements OnInit, DoCheck, AfterViewInit {
         // console.log(this.headerComponent); // we will get proper output of type HeaderComponent
         this.headerComponent.title = 'Mohd Haseeb' // Here, title will be set in header-component once the template is completely laoded
     };
+
+    ngAfterViewChecked(): void {
+      // this.headerComponent.title = 'Mohd Haseeb' 
+    }
 
     ngDoCheck(): void {
         console.log("Some changes detected!!!!!");
