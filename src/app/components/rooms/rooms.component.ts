@@ -24,6 +24,8 @@ export class RoomsComponent implements OnInit {
     roomList : RoomList[] = []
     roomSelected! : RoomList ;
 
+    roomListComName = 'Table Details : ';
+
 
     ngOnInit(): void {
       this.roomList = [
@@ -61,10 +63,26 @@ export class RoomsComponent implements OnInit {
 
     hideRooms() : void {
       this.hideDetails = !this.hideDetails;
+      this.roomListComName = 'Room Details :'
     };
 
     selectRoom(roomSelected : RoomList){
         this.roomSelected = roomSelected;
+    };
+
+    addRoom(){
+      const room : RoomList = {
+        roomNumber : 4,
+        roomType : 'standard',
+        price : 799,
+        photo : 'http://imagelink75436',
+        checkInTime : new Date('26-Dec-2022'),
+        checkOutTime : new Date('05-Jan-2023')
+
+      };
+
+      // this.roomList.push(room) => this doesn't follow the Principle of Immutability
+      this.roomList = [...this.roomList, room]; 
     }
 
 }

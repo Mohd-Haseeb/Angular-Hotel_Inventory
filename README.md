@@ -129,3 +129,16 @@ To create a component:
 - ![](https://angular.io/generated/images/guide/inputs-outputs/input-output-diagram.svg)
 
 - The child selector is <app-input-output> with item and deleteRequest being @Input() and @Output() properties in the child component class. The property currentItem and the method crossOffItem() are both in the parent component class.
+
+
+## ngOnChanges:
+
+- By default Angular performs ChangeDetection on each and every Component, which sometimes is unnecessary.
+- So, we can change the DetectionStrategy in the Angular Application
+    - __OnPush ChangeDetectionStrategy__ can be applied only if the component is not changing the data internally(Ex: Chiild Component)
+
+***NOTE*** : Concept of Immutbility => We should always return a new instance if we are changing the data(say a list). Lets say we are diplaying data in a table in our HTML file. And we have an option to Add new data and data is looped through an Array. So, whenever we add new Data, we shouldn't push into it rather return a new object every time we modify the instance. How? For Array we can use Spread operator.
+
+- __ngOnChanges__ life cycle hook can be applied on a component which has __@Input__ property
+
+- Use Case : So, whenever we get a new value in the __@Input__ => We update the value in the View by using __ngOnChnages__
