@@ -184,3 +184,26 @@ To create a component:
 ## @ViewChildren
 - The __@ViewChild__ will always access the first instance whicbh is available in the Template
 - In case we want to access all the elements available on the Component, we need to use __@ViewChildren__
+
+
+## ngAfterContentInit
+- It has to something with __content__. But what is the content here? __Content Projection__ 
+
+- 
+
+## ng-content
+- The order in which we define the components inside this how it will be rendered in the template
+```html
+    <!-- this is inside container.component.html -->
+    <ng-content select="app-employee"></ng-content>
+    <ng-content></ng-content>
+    <ng-content select="app-rooms"></ng-content>
+
+    <!-- This is inside the app.component.html file where we call container component within which we call other Templates. Here whatever may be the order in which we call the HTML templates of other components, rendering will be based on the order in which they are written in the container component -->
+    <app-container>
+        <app-rooms></app-rooms>
+        <app-employee></app-employee>
+        <h2>This is from ng-container </h2>
+    </app-container>
+
+```
