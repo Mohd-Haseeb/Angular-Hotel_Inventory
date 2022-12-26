@@ -179,3 +179,8 @@ To create a component:
 ```
 
 - Here we are saying, give me reference to the __user__ tag and this __ViewContainerRef__ will help us to dynamically load a component
+
+
+## @ViewChildren
+- The __@ViewChild__ will always access the first instance whicbh is available in the Template
+- In case we want to access all the elements available on the Component, we need to use __@ViewChildren__

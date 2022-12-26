@@ -1,6 +1,7 @@
-import { Component, OnInit, DoCheck, ViewChild, AfterViewInit, AfterViewChecked } from '@angular/core';
+import { Component, OnInit, DoCheck, ViewChild, AfterViewInit, AfterViewChecked, ViewChildren, QueryList } from '@angular/core';
 import { RoomList, Rooms } from './rooms';
 import { HeaderComponent } from '../header/header.component';
+import { Head } from 'rxjs';
 
 
 
@@ -29,6 +30,10 @@ export class RoomsComponent implements OnInit, DoCheck, AfterViewInit, AfterView
     
     // Here, using ViewChild we have created a new instance of Header Component
     @ViewChild(HeaderComponent, {static:true} ) headerComponent !: HeaderComponent;
+
+
+    // to access, all the instances we need to use @ViewChildren
+    @ViewChildren(HeaderComponent) headerChildrenComponent !: QueryList<HeaderComponent>;
 
     constructor() {}
 
@@ -72,7 +77,10 @@ export class RoomsComponent implements OnInit, DoCheck, AfterViewInit, AfterView
     };
 
     ngAfterViewChecked(): void {
-      // this.headerComponent.title = 'Mohd Haseeb' 
+      this.headerComponent.title = 'Mohd Haseeb' 
+
+      this.headerChildrenComponent.last.title = 'Last Title';
+    //  console.log(this.headerChildrenComponent.get(0))
     }
 
     ngDoCheck(): void {
