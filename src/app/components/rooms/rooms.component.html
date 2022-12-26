@@ -24,30 +24,10 @@
 </div>
 
 <div *ngIf="roomList">
-    <table class="table">
-        <tr>
-            <th>Index Position</th>
-            <th>Even/Odd</th>
-            <th>Number</th>
-            <th>Type</th>
-            <th>Price</th>
-            <th>Photo</th>
-            <th>Check In</th>
-            <th>Check Out</th>
-        </tr>
-        <tbody>
-            <tr [ngClass]="e ? 'even' : 'odd'" *ngFor="let r of roomList; let e = even; let o = odd; let i = index ">
-                <td>{{ i }}</td>
-                <td>{{ e ? "Even" : "Odd" }}</td>
-                <td>{{ r.roomNumber }}</td>  
-                <td>{{ r.roomType | uppercase }}</td>  
-                <td>{{ r.price | currency : 'GBP'}}</td>  
-                <td>{{ r.photo }}</td>  
-                <td>{{ r.checkInTime | date }}</td>  
-                <td>{{ r.checkOutTime | date : 'mediumDate' }}</td>  
-            </tr>
-        </tbody>
-    </table>
+
+    <!-- @Input is used to send roomList data to rooms in the rooms-list component -->
+    <app-rooms-list [rooms]="roomList" ></app-rooms-list>
+    
 </div>
 
 

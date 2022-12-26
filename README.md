@@ -52,4 +52,41 @@ To create a component:
     - AsyncPipe
 
 
-> npm i bootstrap
+## LifeCycle Hooks
+
+- Component instance has lifecycle hooks which can help you to hook into different events on Components
+- Lifecycle ends when __Component__ is __destroyed__
+- The Lifecycle hooks are:
+    - ngOnChanges
+    - ngOnInit
+    - ngDoCheck
+    - ngAfterContentInit
+    - ngAfterContentChecked
+    - ngAfterViewInit
+    - ngAfterViewChecked
+    - ngOnDestroy
+
+- Even before __ngOnInit__ hook is executed, component needs to be initialised by the __constructor__
+
+- Constructor should not have any blocking code. It should be part of __ngOnInit__
+
+
+## Component Communication
+
+- Situation where two or more Components needs to communicate with each other is known as __Component Communication__
+- There are many ways to implement this communication
+    1. Using __@Input__ and __@Output__
+    2. Using __@ViewChild__ and __@ContentChild__
+    3. Using __Services__
+
+### __@Input :__
+
+- If we write @Input -> Then that particular variable will become property of the Component(HTML File ex: app-something)
+
+- In @Input, Component which send data is called __Parent Or Smart Component__ and the compoent where the data is rendered is called __Child or Dumb Component__
+
+- Suppose, now the Child component needs to perform some action based on certain data received from Parent. It cannot do it directly on its own. So it has to send data back to the Parent to perform the action. How do we do that? _@Output_
+
+### __@Output :__
+
+- 
