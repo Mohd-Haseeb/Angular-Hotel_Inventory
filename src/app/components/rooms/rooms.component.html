@@ -6,6 +6,10 @@
     Welcome to {{ hotelName }} !!
 </h1>
 
+<!-- Sending Data from this Component to the main component using @ViewChild -->
+<app-header></app-header>
+
+
 <!-- Property Binding -->
 <div [hidden]="hideDetails" >
     No of Rooms  <p [innerText]="noOfRooms"></p> 

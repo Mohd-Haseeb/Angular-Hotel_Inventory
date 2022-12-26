@@ -149,3 +149,16 @@ To create a component:
 - On Changes event is something executed everytime we raise any event irrespective of where the Component is implemented or available
 - It will listen to any changes happened anywhere in the entire application
 - ***IMPORTANT*** => We should not implement __ngOnChange__ and __ngDoCheck__ together in the same Component
+
+
+## ViewChild
+ - We can access Component into another Component without using @Input or @Output 
+
+ - Using __@ViewChild__ we have create a new instance of the Component where we want to send the data
+
+## ngAfterViewInit
+- We can use this lifecycle hook, if we have to perform certain operations after the other components we use in our current templete is completelt loaded
+
+## ngAfterViewChecked
+- 
+

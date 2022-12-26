@@ -1,5 +1,6 @@
-import { Component, OnInit, DoCheck } from '@angular/core';
+import { Component, OnInit, DoCheck, ViewChild, AfterViewInit } from '@angular/core';
 import { RoomList, Rooms } from './rooms';
+import { HeaderComponent } from '../header/header.component';
 
 
 
@@ -8,7 +9,7 @@ import { RoomList, Rooms } from './rooms';
   templateUrl: './rooms.component.html',
   styleUrls: ['./rooms.component.css']
 })
-export class RoomsComponent implements OnInit, DoCheck {
+export class RoomsComponent implements OnInit, DoCheck, AfterViewInit {
     
 
     hotelName:string = 'Developer\'s Hotel';
@@ -25,9 +26,16 @@ export class RoomsComponent implements OnInit, DoCheck {
     roomSelected! : RoomList ;
 
     roomListComName = 'Table Details : ';
+    
+    // Here, using ViewChild we have created a new instance of Header Component
+    @ViewChild(HeaderComponent, {static:true} ) headerComponent !: HeaderComponent;
 
+    constructor() {}
 
     ngOnInit(): void {
+
+      console.log(this.headerComponent) // o/p will be undefined for {static : false}
+
       this.roomList = [
 
       {
@@ -56,11 +64,16 @@ export class RoomsComponent implements OnInit, DoCheck {
       }
       ];
 
-    }
+    };
+
+    ngAfterViewInit(): void {
+        // console.log(this.headerComponent); // we will get proper output of type HeaderComponent
+        this.headerComponent.title = 'Mohd Haseeb' // Here, title will be set in header-component once the template is completely laoded
+    };
 
     ngDoCheck(): void {
         console.log("Some changes detected!!!!!");
-    }
+    };
 
 
     hideRooms() : void {
