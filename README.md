@@ -252,8 +252,56 @@ To create a component:
     ```
 
 
+## Resolution Modifiers
+    1. Self
+    2. SkipSelf
+    3. Optional
+    4. Host
+
+- __@Self()__:
+    - We write this decorator before a Service in the component
+    - What it means, this particular service must be available at the __Component Level__ and if it is not then __throw an exception__ instead of resolving by moving a level up.
+
+    ```typescript
+            @Component({
+            selector: 'app-employee',
+            templateUrl: './employee.component.html',
+            styleUrls: ['./employee.component.css'],
+            providers: [RoomsService] // this means, this service is available at the component level
+            })
+            export class EmployeeComponent {
+
+            empName : string = "Luffy"
+
+            constructor(@Self() private roomService : RoomsService) {} // @Self() makes sure the service is at compoent level else throws an Exception
+
+            }
+    ```
+
+- __@SkipSelf__ :
+    - It does what the name says, it skips even if have provided a __provider : [service]__ in the Component level and starts to resolve form its parent Component.
+    - Skip myself from Resolution Tree
+
+- __@Optional()__:
+    - Suppose we want to use a Service only during __Dev Env__ (say Logger Service) 
+    - Since, we don't want this service in Production, we should not register in __providedIn: 'root'__. Instead  use, __@Optional()__
+
+    ```typescript
+        constructor(@Optional() private loggerService : LoggerService) {} // component where we are using this service
 
 
+        // Inside the Service
+        @Injectable()
+        export class LoggerService {}
+
+    ```
+
+- __@Host()__:
+    - What if I want a separate instance for all the components that are part of a particular component(say __container__ in this code example)
+
+    ```typescript
+        constructor(@Host() private roomService : RoomsService) {} // So, all the components loaded inside this component will have a separate instance
+    ``` 
 
 
 

@@ -1,4 +1,4 @@
-import { Component, OnInit, DoCheck, ViewChild, AfterViewInit, AfterViewChecked, ViewChildren, QueryList } from '@angular/core';
+import { Component, OnInit, DoCheck, ViewChild, AfterViewInit, AfterViewChecked, ViewChildren, QueryList, SkipSelf } from '@angular/core';
 import { RoomList, Rooms } from './rooms';
 import { HeaderComponent } from '../header/header.component';
 import { Head } from 'rxjs';
@@ -36,7 +36,7 @@ export class RoomsComponent implements OnInit, DoCheck, AfterViewInit, AfterView
     // to access, all the instances we need to use @ViewChildren
     @ViewChildren(HeaderComponent) headerChildrenComponent !: QueryList<HeaderComponent>;
 
-    constructor(private roomService : RoomsService) {}
+    constructor(@SkipSelf()  private roomService : RoomsService) {}
 
     ngOnInit(): void {
 
