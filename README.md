@@ -207,3 +207,55 @@ To create a component:
     </app-container>
 
 ```
+
+
+## ngOnDestroy
+- When does our component gets destroyed?
+
+
+## DEPENDENCY INJECTION
+- Dependencies are class or objects which we can inject inside a component or service
+- It's a design pattern
+- Angular has built in support for Dependency Injection
+-Dependency Injection approach says we should not create the Instance directly
+
+
+- __DI PROVIDERS__
+    - Class based providers
+    - Value providders
+    - Factory 
+
+## Services
+- The responsibility of Business Logic should be takeen by Services, not Component
+- What is a Service? A reusable class containing Business Logic and used by Components using Dependency Injection
+- Component Intercation can be done using Service:
+    - Sharing data between multiple components
+    - Sharing data between App
+
+```typescript
+    @Injectable({
+        providedIn: 'root' // 'any'
+    })
+    // 
+```
+- How Angular resolves the Dependencies ? using __Dependency Resolution__
+- Whenver we Inject a depency, Angular finds out where the service is provided usign __providedIn__. If it is __root__ -> The service is registered in app.module.ts file by Angular
+- Once we add a __service__ using __providedIn: 'root'__, then we get a single instance of the service available across.
+- What if I need a separate __Instance__? In that case, we have to add __provider__ in that particular component where we need a separate instance
+    ```typescript
+        @Component({
+            selector: 'app-employee',
+            templateUrl: './employee.component.html',
+            styleUrls: ['./employee.component.css'],
+            providers: [RoomsService]
+        })
+    ```
+
+
+
+
+
+
+
+
+
