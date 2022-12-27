@@ -307,4 +307,10 @@ To create a component:
 
 ## Value Providers:
 - In value providers, we can pass an object as a __service__
+- Use Case 1:
+    - We can Inject Value Provider to use end points
+
+- Use Case 2:
+    - To use local storage service as value provider inside angular
+    - NOTE : Any JS API can be used in this way
 

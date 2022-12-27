@@ -1,6 +1,9 @@
-import { AfterViewInit, Component, ElementRef, OnInit, Optional, ViewChild, ViewContainerRef } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, Inject, OnInit, Optional, ViewChild, ViewContainerRef } from '@angular/core';
 import { RoomsComponent } from './components/rooms/rooms.component';
 import { LoggerService } from './components/logger.service';
+import { localStorageToken } from './localstorage.token';
+
+
 
 @Component({
   selector: 'app-root',
@@ -12,7 +15,11 @@ export class AppComponent implements OnInit, AfterViewInit {
 
   role : string = 'Admin';
 
-  constructor(@Optional() private loggerService : LoggerService) {}
+  constructor(@Optional() private loggerService : LoggerService, 
+              @Inject(localStorageToken) private localStorageToken : any
+  ) {
+
+  };
 
   // @ViewChild('user', { read: ViewContainerRef }) vcr !: ViewContainerRef;
 
@@ -20,7 +27,8 @@ export class AppComponent implements OnInit, AfterViewInit {
 
   ngOnInit() {
     // this.name.nativeElement.innerText = "Writing this line in .ts file and displaying dynamically using @ViewChild"
-    this.loggerService.log("AppComponent : ngOnInit")
+    // this.loggerService.log("AppComponent : ngOnInit");
+    this.localStorageToken.setItem('Name', 'Learning Angular');
   }
   
   ngAfterViewInit(): void {
