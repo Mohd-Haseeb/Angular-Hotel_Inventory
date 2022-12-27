@@ -305,5 +305,6 @@ To create a component:
 
 
 
-
+## Value Providers:
+- In value providers, we can pass an object as a __service__
 
