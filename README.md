@@ -314,3 +314,14 @@ To create a component:
     - To use local storage service as value provider inside angular
     - NOTE : Any JS API can be used in this way
 
+# ANGULAR HTTP AND OBSERVABLES
+- HttpClient is a service provided by Angular to interact with APIs
+- HttpClient internaly uses RxJs
+- Here, we have to first import HttpClientModule and then later inject HttpClient Service
+- HttpClient module must be registered at root level
+
+- Internally, Angular uses RxJs library for handling http requests 
+    - __RxJs__ takes whatever data it gets as a stream of data. 
+    - In RxJs, to get the data. Someone has to publish the data(API). As a developer we have to __Subscribe__ to get the data
+    - RxJs works on the __PUSH__ architecture
+

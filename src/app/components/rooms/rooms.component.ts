@@ -42,7 +42,9 @@ export class RoomsComponent implements OnInit, DoCheck, AfterViewInit, AfterView
 
       // console.log(this.headerComponent) // o/p will be undefined for {static : false}
 
-      this.roomList = this.roomService.getRooms();
+      this.roomService.getRooms().subscribe(data => {
+        this.roomList = data;
+      });
 
     };
 
