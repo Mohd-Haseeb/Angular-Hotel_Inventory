@@ -325,3 +325,36 @@ To create a component:
     - In RxJs, to get the data. Someone has to publish the data(API). As a developer we have to __Subscribe__ to get the data
     - RxJs works on the __PUSH__ architecture
 
+## RxJs and Observable 
+- RxJs is a library for writing Reactive Programming
+- Observables are stream of data which we can __Subscribe__
+
+- __Creating our own Observable without using HttpClient__
+    - whenever we call __next()__ on our observable, it will be emitting new data
+    - Whoever is __subscribibng__ to this __stram__, will get the data emitted by __next__
+    ```typescript
+    // In component.ts
+    stream = new Observable(observer => {
+        observer.next("user_1");
+        observer.next("User_2");
+        observer.next("User_3");
+        observer.complete();
+        // observer.error("Some error : Raise Exception")
+    });
+
+    ngOnInit(): void {
+
+      this.stream.subscribe(data => console.log("Coming From Observer => ", data));
+      /*************OR***************/
+      this.stream.subscribe({
+        next : (value) => console.log(value),
+        complete : () => console.log("Streaming Completed"),
+        error : (err) => console.log("Error => ", err)
+        
+      });
+
+    };
+
+    ```
+
+    - Internally, __Observable__ (to which we subscribe) has a __Observer__ which will observe the data if there is a new value which is available. 

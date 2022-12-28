@@ -1,7 +1,7 @@
 import { Component, OnInit, DoCheck, ViewChild, AfterViewInit, AfterViewChecked, ViewChildren, QueryList, SkipSelf } from '@angular/core';
 import { RoomList, Rooms } from './rooms';
 import { HeaderComponent } from '../header/header.component';
-import { Head } from 'rxjs';
+import { Head, Observable } from 'rxjs';
 import { RoomsService } from './services/rooms.service';
 
 
@@ -28,6 +28,17 @@ export class RoomsComponent implements OnInit, DoCheck, AfterViewInit, AfterView
     roomSelected! : RoomList ;
 
     roomListComName = 'Table Details : ';
+
+
+    // CREATING OUR OWN OBSERVABLE
+    stream = new Observable(observer => {
+        observer.next("user_1");
+        observer.next("User_2");
+        observer.next("User_3");
+        observer.complete();
+        // observer.error("Some error : Raise Exception")
+    })
+
     
     // Here, using ViewChild we have created a new instance of Header Component
     @ViewChild(HeaderComponent, {static:true} ) headerComponent !: HeaderComponent;
@@ -41,6 +52,14 @@ export class RoomsComponent implements OnInit, DoCheck, AfterViewInit, AfterView
     ngOnInit(): void {
 
       // console.log(this.headerComponent) // o/p will be undefined for {static : false}
+
+      // this.stream.subscribe(data => console.log("Coming From Observer => ", data));
+      this.stream.subscribe({
+        next : (value) => console.log(value),
+        complete : () => console.log("Streaming Completed"),
+        error : (err) => console.log("Error => ", err)
+        
+      });
 
       this.roomService.getRooms().subscribe(data => {
         this.roomList = data;
